@@ -131,7 +131,12 @@ add_library(rvo2_3d
 
 ## Declare a C++ executable
 # add_executable(orca_afq_node src/orca_afq_node.cpp)
-add_executable(simulation src/main.cpp src/SimulatorNode.cpp src/Agent.cpp)
+add_executable(simulation
+    src/main.cpp
+    src/SimulatorNode.cpp
+    src/Agent.cpp
+    src/Formation.cpp
+)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
