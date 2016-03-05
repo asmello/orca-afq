@@ -4,19 +4,19 @@ namespace Simulation {
     SimulatorNode::SimulatorNode(float rate) {
 
         rvo_sim_.setTimeStep(1.0f/rate);
-        rvo_sim_.setAgentDefaults(10.0f, 10, 2.0f, 0.25f, 1.25f); // change
+        rvo_sim_.setAgentDefaults(20.0f, 10, 1.5f, 1.0f, 1.25f); // change
 
         // Add agents to simulation
-        agents_.emplace_back(this, RVO::Vector3(0.0f, 1.0f, 0.5f), "uav1");
-        agents_.emplace_back(this, RVO::Vector3(0.0f, -1.0f, 0.5f), "uav2");
-        agents_.emplace_back(this, RVO::Vector3(0.0f, -10.0f, 1.0f), "uav3");
+        agents_.emplace_back(this, RVO::Vector3(1.0f, 1.5f, 0.5f), "uav1");
+        agents_.emplace_back(this, RVO::Vector3(-1.0f, -1.5, 0.5f), "uav2");
+        agents_.emplace_back(this, RVO::Vector3(0.0f, -15.0f, 1.0f), "uav3");
 
         formations_.emplace_back(this); // Create a new formation
         formations_[0].setLeader(2); // And bind it to agent 3
 
         // Add the other agents to the formation (so it controls their targets)
-        formations_[0].addAgent(0, RVO::Vector3(1.5f, -1.0f, 1.0f));
-        formations_[0].addAgent(1, RVO::Vector3(-1.5f, -1.0f, 1.0f));
+        formations_[0].addAgent(0, RVO::Vector3(3.0f, -2.0f, 3.0f));
+        formations_[0].addAgent(1, RVO::Vector3(-3.0f, -2.0f, 3.0f));
 
         // Manually set agent 3's target
         agents_[2].setTarget(RVO::Vector3(0.0f, 20.0f, 20.0f));
